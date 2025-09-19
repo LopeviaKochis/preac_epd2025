@@ -27,7 +27,7 @@ EnerAgro PE es una aplicación web progresiva (PWA) y Plataforma de Resiliencia 
 │   Frontend      │    │    Backend      │    │  Python Script  │
 │  (EnerAgro PE)  │◄──►│   Node.js +     │◄──►│   (ML Model)    │
 │   React + Vite  │    │   Express.js    │    │   scikit-learn  │
-│   PWA + MUI     │    │   JWT + Twilio  │    │                 │
+│   PWA + MUI     │    │   Twilio  │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
@@ -43,9 +43,9 @@ Nuestro objetivo es evolucionar de un MVP a una plataforma integral y escalable.
 ### Fase 2: Abstracción del Machine Learning
 1.  **🤖 Endpoint de Modelos ML**: Migrar la ejecución de los scripts de Python a un servidor dedicado (usando FastAPI o Flask) para desacoplar la lógica de ML del backend principal.
 2.  **🧠 Modelos Avanzados**: Desarrollar y consumir nuevos modelos para:
-    *   **Prevención de Plagas**: Detección de plagas mediante Computer Vision.
-    *   **Riego Inteligente**: Predicción de necesidades hídricas con mayor precisión.
-    *   **Producción**: Modelos de predicción de rendimiento de cultivos.
+    *   **Prevención de Plagas**: Detección de plagas mediante Computer Vision y metodologías basadas en clima, presente en estudios del IGP aquí -> https://repositorio.igp.gob.pe/items/339d8484-dd5f-4656-8fc9-313f4b915af7
+    *   **Riego Inteligente**: Predicción de necesidades hídricas con mayor precisión según tipo de cultivo y datos climáticos hiperlocales.
+    *   **Producción**: Modelos de predicción de rendimiento de cultivos utilizando datos del BSRN y EMA.
 
 ### Fase 3: Soberanía de Datos y Escalabilidad
 1.  **🛰️ Pipeline de Datos Locales**: Establecer un sistema de recolección y procesamiento de datos climáticos y de campo (sensores IoT) para reducir la dependencia de APIs externas como OpenMeteo. Esto nos permitirá generar predicciones hiper-localizadas y en tiempo real.
@@ -53,8 +53,8 @@ Nuestro objetivo es evolucionar de un MVP a una plataforma integral y escalable.
 3.  **⚙️ CI/CD**: Automatizar los despliegues utilizando GitHub Actions.
 
 ### Fase 4: Expansión de Módulos
-1.  **💧 Riego Inteligente**: Integrar datos del pipeline local y sensores IoT para ofrecer recomendaciones de riego ultra-precisas.
-2.  **🐛 Prevención de Plagas**: Activar el módulo con modelos de Computer Vision para que los usuarios puedan identificar plagas subiendo una foto desde su celular.
+1.  **💧 Riego Inteligente**: Integrar datos de repositorios públicos como IGP/SENAMHI para un pipeline hiperlocal y de ser posible sensores IoT para ofrecer recomendaciones de riego ultra-precisas.
+2.  **🐛 Prevención de Plagas**: Activar el módulo con modelos de CV para que los usuarios puedan identificar plagas subiendo una foto desde su celular reforzado el pronóstico con datos climáticos.
 3.  **📊 Recomendaciones de Producción**: Mejorar las recomendaciones con datos históricos de rendimiento y precios de mercado.
 4.  **💡 Resiliencia Energética**: Añadir un dashboard de monitoreo de consumo en tiempo real para sistemas fotovoltaicos.
 
@@ -118,36 +118,39 @@ Aplicación disponible en: `http://localhost:3000`
 
 ## 📡 API Endpoints
 
-### 🔐 Autenticación
+### 🔐 Autenticación (NO UTILIZADO PERO IMPLEMENTADO)
 - `POST /api/auth/register` - Registro de usuario
 - `POST /api/auth/login` - Inicio de sesión
 - `GET /api/auth/profile` - Perfil del usuario
 - `POST /api/auth/refresh` - Renovar token
 
-### ⚡ Energía Solar
-- `POST /api/solar/calculate` - Calcular sistema solar
+### Alerta de Heladas (FUNCIONAL)
+- `POST /api/weather/frost/predict` - Realizar predicción de heladas
+
+### ⚡ Energía Solar (NO FUNCIONAL)
+- `POST /api/solar/calculate` - Estimación de producción FV
 - `GET /api/solar/recommendations` - Recomendaciones personalizadas
 
-### 💧 Riego Inteligente  
+### 💧 Riego Inteligente (NO FUNCIONAL)
 - `POST /api/irrigation/calculate` - Calcular necesidades de riego
 - `GET /api/irrigation/schedule` - Programación de riego
 
-### 🌤️ Clima
+### 🌤️ Clima (NO FUNCIONAL)
 - `GET /api/weather/current` - Clima actual
 - `GET /api/weather/forecast` - Pronóstico 7 días
 - `GET /api/weather/alerts` - Alertas meteorológicas
 
-### 🐛 Plagas
+### 🐛 Plagas (NO FUNCIONAL)
 - `POST /api/pest/assess` - Evaluación de riesgo
 - `POST /api/pest/identify` - Identificación de plagas
 - `GET /api/pest/treatments` - Tratamientos recomendados
 
-### 📊 Producción
+### 📊 Producción (NO FUNCIONAL)
 - `POST /api/production/recommend` - Recomendaciones de cultivos
 - `GET /api/production/calendar` - Calendario de siembra
 - `POST /api/production/optimize` - Optimización de producción
 
-### 📨 Notificaciones
+### 📨 Notificaciones (FUNCIONAL)
 - `POST /api/notifications/send` - Enviar SMS
 - `GET /api/notifications/history` - Historial de notificaciones
 
@@ -232,42 +235,28 @@ preac_epd2025/
 └── README.md              # Documentación
 ```
 
-## 🎯 Cultivos Soportados
+## 🎯 Cultivos Soportados (A FUTURO PARA FUNCIONALIDADES AGRÍCOLAS)
 
 ### 🌽 Maíz (Zea mays)
-- **Variedades**: Marginal 28T, PM-213, Cusco Gigante
-- **Regiones**: Costa, Sierra, Selva
+- **Variedades**: Amiláceo y Duro
+- **Regiones**: Junín
 - **Ciclo**: 120-180 días
-- **Rendimiento**: 4,500-8,500 kg/ha
 
 ### 🥔 Papa (Solanum tuberosum)  
-- **Variedades**: Canchán, Huayro, Única
-- **Regiones**: Sierra principalmente
-- **Ciclo**: 100-150 días
-- **Rendimiento**: 18,000-25,000 kg/ha
+- **Variedades**: Canchán, Huayro
+- **Regiones**: Junín
+- **Ciclo**: 100-180 días
 
 ### 🌾 Cebada (Hordeum vulgare)
 - **Variedades**: UNA-80, Centenario
-- **Regiones**: Sierra alta
+- **Regiones**: Junín
 - **Ciclo**: 120-140 días  
-- **Rendimiento**: 3,500-4,200 kg/ha
 
 ## 🌍 Regiones Geográficas Soportadas
 
-### 🏝️ Costa
-- Clima árido y semi-árido
-- Riego tecnificado requerido
-- Doble campaña anual
-
-### ⛰️ Sierra
+### ⛰️ Sierra - Junín
 - Agricultura de secano y riego
-- Altitudes 1,500-4,000 msnm
-- Una campaña principal (lluvias)
-
-### 🌿 Selva
-- Clima tropical húmedo
-- Alta biodiversidad
-- Desafíos fitosanitarios
+- Altitudes 2,500-4,000 msnm
 
 ## 📈 Características de Producción
 
@@ -297,7 +286,7 @@ preac_epd2025/
 
 ## 🔒 Seguridad
 
-### 🛡️ Autenticación y Autorización
+### 🛡️ Autenticación y Autorización (NO FUNCIONAL PERO IMPLEMENTADO)
 - Tokens JWT con expiración
 - Validación de números telefónicos peruanos
 - Rate limiting por IP
@@ -311,7 +300,7 @@ preac_epd2025/
 
 ## 📱 Funcionalidades Móviles
 
-### 📲 PWA (Progressive Web App)
+### 📲 PWA (Progressive Web App - A FUTURO)
 - Instalable en dispositivos móviles
 - Funciona sin conexión
 - Notificaciones push (futuro)
@@ -361,15 +350,8 @@ preac_epd2025/
 ## 📞 Soporte
 
 ### 📧 Contacto
-- **Email**: soporte@preac.pe
-- **WhatsApp**: +51 999 999 999
-- **Documentación**: [docs.preac.pe](https://docs.preac.pe)
-
-### 🆘 FAQ
-- **¿Funciona sin internet?** Sí, las funciones básicas están disponibles offline
-- **¿Es gratis?** La versión básica es gratuita para pequeños agricultores
-- **¿Qué cultivos soporta?** Actualmente maíz, papa y cebada con más en desarrollo
-- **¿Funciona en móviles?** Sí, es una PWA totalmente responsive
+- **Email**: ylopevia@gmail.com
+- **WhatsApp**: 958 268 152
 
 ## 📄 Licencia
 
@@ -377,33 +359,27 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.m
 
 ## 🙏 Agradecimientos
 
-- Ministerio de Agricultura y Riego del Perú (MINAGRI)
-- Instituto Nacional de Investigación y Extensión Agraria (INIA)
-- Servicio Nacional de Meteorología e Hidrología (SENAMHI)
-- Comunidad de desarrolladores open source
+- Instituto Geofísico del Perú (IGP)
+- Secretaría de Gobierno y Transformación Digital (SGTD - PCM)
 
 ---
 
 ## 📈 Estado del Proyecto
 
 **Versión**: 1.0.0
-**Estado**: ✅ MVP Completado
+**Estado**: ✅ Demo Completado
 **Última actualización**: Septiembre 2025
 
 ### ✅ Características Implementadas
-- [x] Sistema de autenticación completo
-- [x] 5 módulos agrícolas principales
-- [x] PWA con funcionalidad offline
-- [x] API REST completa
+- [x] 1 módulo agroclimático
+- [x] API REST
 - [x] Interfaz responsive
 - [x] Sistema de notificaciones SMS
-- [x] Calculadoras especializadas
 - [x] Dashboard interactivo
 
 ### 🔄 En Desarrollo
+- [ ] Las otras 4 funcionalidades energéticas y agroclimáticas
 - [ ] Integración FastAPI para ML
 - [ ] Tests automatizados
 - [ ] Documentación API (Swagger)
 - [ ] Optimizaciones de performance
-
-**¡PREAC está listo para transformar la agricultura peruana! 🌾🚀**
