@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1758061954082",
+    "name": "Juan Pérez",
+    "email": "juan.perez@gmail.com",
+    "phone": "+51 987 654 321",
+    "password": "$2a$12$MTMrwkHfiCEsNyppmDIlm.SskLXpoi.1atvRp1sYF6/sBZ9TlFssm",
+    "createdAt": "2025-09-16T22:32:34.082Z",
+    "updatedAt": "2025-09-16T22:32:34.082Z",
+    "isActive": true
+  }
+]

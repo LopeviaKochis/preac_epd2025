@@ -1,0 +1,180 @@
+/* Estilos para imágenes placeholder y optimización de carga */
+
+/* Contenedor base para imágenes */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+              linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+              linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+              linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Placeholder mientras carga la imagen */
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  font-size: 48px;
+  text-align: center;
+  position: relative;
+}
+
+.image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Imágenes específicas con placeholders SVG */
+
+/* Panel Solar */
+.solar-panel-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%234CAF50'/%3E%3Cg fill='%23FFD700'%3E%3Crect x='50' y='50' width='300' height='200' rx='10' fill='%23333'/%3E%3Cg stroke='%23555' stroke-width='2'%3E%3Cline x1='50' y1='100' x2='350' y2='100'/%3E%3Cline x1='50' y1='150' x2='350' y2='150'/%3E%3Cline x1='50' y1='200' x2='350' y2='200'/%3E%3Cline x1='125' y1='50' x2='125' y2='250'/%3E%3Cline x1='200' y1='50' x2='200' y2='250'/%3E%3Cline x1='275' y1='50' x2='275' y2='250'/%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='280' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3EPanel Solar%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Sistema de Riego */
+.irrigation-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2364B5F6'/%3E%3Cg fill='%232196F3'%3E%3Ccircle cx='200' cy='150' r='80' fill='%23E3F2FD'/%3E%3Cg stroke='%232196F3' stroke-width='3' fill='none'%3E%3Ccircle cx='200' cy='150' r='60'/%3E%3Ccircle cx='200' cy='150' r='40'/%3E%3Ccircle cx='200' cy='150' r='20'/%3E%3C/g%3E%3Cg fill='%232196F3' opacity='0.7'%3E%3Ccircle cx='150' cy='100' r='3'%3E%3Canimate attributeName='r' values='3;8;3' dur='2s' repeatCount='indefinite'/%3E%3C/circle%3E%3Ccircle cx='250' cy='120' r='3'%3E%3Canimate attributeName='r' values='3;8;3' dur='2s' begin='0.5s' repeatCount='indefinite'/%3E%3C/circle%3E%3Ccircle cx='180' cy='200' r='3'%3E%3Canimate attributeName='r' values='3;8;3' dur='2s' begin='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3Ccircle cx='220' cy='180' r='3'%3E%3Canimate attributeName='r' values='3;8;3' dur='2s' begin='1.5s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='280' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3ESistema de Riego%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Cultivo de Maíz */
+.corn-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%238BC34A'/%3E%3Cg%3E%3Crect x='0' y='250' width='400' height='50' fill='%23795548'/%3E%3Cg fill='%23FDD835'%3E%3Cellipse cx='100' cy='180' rx='15' ry='40'/%3E%3Cellipse cx='130' cy='170' rx='15' ry='45'/%3E%3Cellipse cx='160' cy='175' rx='15' ry='42'/%3E%3Cellipse cx='190' cy='165' rx='15' ry='48'/%3E%3Cellipse cx='220' cy='180' rx='15' ry='40'/%3E%3Cellipse cx='250' cy='170' rx='15' ry='45'/%3E%3Cellipse cx='280' cy='175' rx='15' ry='42'/%3E%3Cellipse cx='310' cy='165' rx='15' ry='48'/%3E%3C/g%3E%3Cg fill='%234CAF50'%3E%3Cpath d='M100 180 Q90 150 85 120 Q90 100 100 80 L105 80 Q110 100 115 120 Q110 150 100 180'/%3E%3Cpath d='M130 170 Q120 140 115 110 Q120 90 130 70 L135 70 Q140 90 145 110 Q140 140 130 170'/%3E%3Cpath d='M160 175 Q150 145 145 115 Q150 95 160 75 L165 75 Q170 95 175 115 Q170 145 160 175'/%3E%3Cpath d='M190 165 Q180 135 175 105 Q180 85 190 65 L195 65 Q200 85 205 105 Q200 135 190 165'/%3E%3Cpath d='M220 180 Q210 150 205 120 Q210 100 220 80 L225 80 Q230 100 235 120 Q230 150 220 180'/%3E%3Cpath d='M250 170 Q240 140 235 110 Q240 90 250 70 L255 70 Q260 90 265 110 Q260 140 250 170'/%3E%3Cpath d='M280 175 Q270 145 265 115 Q270 95 280 75 L285 75 Q290 95 295 115 Q290 145 280 175'/%3E%3Cpath d='M310 165 Q300 135 295 105 Q300 85 310 65 L315 65 Q320 85 325 105 Q320 135 310 165'/%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='40' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3ECultivo de Maíz%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Cultivo de Papa */
+.potato-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2366BB6A'/%3E%3Cg%3E%3Crect x='0' y='200' width='400' height='100' fill='%235D4037'/%3E%3Cg fill='%23A1887F'%3E%3Cellipse cx='80' cy='220' rx='25' ry='15'/%3E%3Cellipse cx='130' cy='230' rx='30' ry='18'/%3E%3Cellipse cx='180' cy='225' rx='28' ry='16'/%3E%3Cellipse cx='230' cy='235' rx='32' ry='20'/%3E%3Cellipse cx='280' cy='220' rx='26' ry='15'/%3E%3Cellipse cx='320' cy='240' rx='24' ry='14'/%3E%3C/g%3E%3Cg fill='%23388E3C'%3E%3Cpath d='M80 180 Q70 150 75 120 Q85 100 95 80 Q90 60 100 40 L110 45 Q105 65 110 85 Q115 105 120 125 Q115 145 110 165 Q105 180 95 190 Z'/%3E%3Cpath d='M130 190 Q120 160 125 130 Q135 110 145 90 Q140 70 150 50 L160 55 Q155 75 160 95 Q165 115 170 135 Q165 155 160 175 Q155 190 145 200 Z'/%3E%3Cpath d='M180 185 Q170 155 175 125 Q185 105 195 85 Q190 65 200 45 L210 50 Q205 70 210 90 Q215 110 220 130 Q215 150 210 170 Q205 185 195 195 Z'/%3E%3Cpath d='M230 195 Q220 165 225 135 Q235 115 245 95 Q240 75 250 55 L260 60 Q255 80 260 100 Q265 120 270 140 Q265 160 260 180 Q255 195 245 205 Z'/%3E%3Cpath d='M280 180 Q270 150 275 120 Q285 100 295 80 Q290 60 300 40 L310 45 Q305 65 310 85 Q315 105 320 125 Q315 145 310 165 Q305 180 295 190 Z'/%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='30' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3ECultivo de Papa%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Cultivo de Cebada */
+.barley-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23FF9800'/%3E%3Cg%3E%3Crect x='0' y='250' width='400' height='50' fill='%23795548'/%3E%3Cg fill='%23FFC107'%3E%3Cg transform='translate(60,200)'%3E%3Cpath d='M0 0 Q-5 -10 -3 -20 Q0 -30 3 -40 Q6 -50 5 -60 Q3 -70 0 -80 Q2 -85 5 -80 Q8 -70 10 -60 Q12 -50 15 -40 Q18 -30 20 -20 Q18 -10 15 0' fill='%23F57F17'/%3E%3Cellipse cx='0' cy='-5' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-10' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-15' rx='3' ry='2'/%3E%3Cellipse cx='15' cy='-20' rx='3' ry='2'/%3E%3Cellipse cx='12' cy='-25' rx='3' ry='2'/%3E%3Cellipse cx='8' cy='-30' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-35' rx='3' ry='2'/%3E%3Cellipse cx='7' cy='-40' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-45' rx='3' ry='2'/%3E%3Cellipse cx='3' cy='-50' rx='3' ry='2'/%3E%3C/g%3E%3Cg transform='translate(120,195)'%3E%3Cpath d='M0 0 Q-5 -10 -3 -20 Q0 -30 3 -40 Q6 -50 5 -60 Q3 -70 0 -80 Q2 -90 5 -85 Q8 -75 10 -65 Q12 -55 15 -45 Q18 -35 20 -25 Q18 -15 15 -5' fill='%23F57F17'/%3E%3Cellipse cx='0' cy='-5' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-10' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-15' rx='3' ry='2'/%3E%3Cellipse cx='15' cy='-20' rx='3' ry='2'/%3E%3Cellipse cx='12' cy='-25' rx='3' ry='2'/%3E%3Cellipse cx='8' cy='-30' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-35' rx='3' ry='2'/%3E%3Cellipse cx='7' cy='-40' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-45' rx='3' ry='2'/%3E%3Cellipse cx='3' cy='-50' rx='3' ry='2'/%3E%3Cellipse cx='1' cy='-55' rx='3' ry='2'/%3E%3C/g%3E%3Cg transform='translate(180,190)'%3E%3Cpath d='M0 0 Q-5 -10 -3 -20 Q0 -30 3 -40 Q6 -50 5 -60 Q3 -70 0 -80 Q2 -95 5 -90 Q8 -80 10 -70 Q12 -60 15 -50 Q18 -40 20 -30 Q18 -20 15 -10' fill='%23F57F17'/%3E%3Cellipse cx='0' cy='-5' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-10' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-15' rx='3' ry='2'/%3E%3Cellipse cx='15' cy='-20' rx='3' ry='2'/%3E%3Cellipse cx='12' cy='-25' rx='3' ry='2'/%3E%3Cellipse cx='8' cy='-30' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-35' rx='3' ry='2'/%3E%3Cellipse cx='7' cy='-40' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-45' rx='3' ry='2'/%3E%3Cellipse cx='3' cy='-50' rx='3' ry='2'/%3E%3Cellipse cx='1' cy='-55' rx='3' ry='2'/%3E%3Cellipse cx='2' cy='-60' rx='3' ry='2'/%3E%3C/g%3E%3Cg transform='translate(240,195)'%3E%3Cpath d='M0 0 Q-5 -10 -3 -20 Q0 -30 3 -40 Q6 -50 5 -60 Q3 -70 0 -80 Q2 -90 5 -85 Q8 -75 10 -65 Q12 -55 15 -45 Q18 -35 20 -25 Q18 -15 15 -5' fill='%23F57F17'/%3E%3Cellipse cx='0' cy='-5' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-10' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-15' rx='3' ry='2'/%3E%3Cellipse cx='15' cy='-20' rx='3' ry='2'/%3E%3Cellipse cx='12' cy='-25' rx='3' ry='2'/%3E%3Cellipse cx='8' cy='-30' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-35' rx='3' ry='2'/%3E%3Cellipse cx='7' cy='-40' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-45' rx='3' ry='2'/%3E%3Cellipse cx='3' cy='-50' rx='3' ry='2'/%3E%3Cellipse cx='1' cy='-55' rx='3' ry='2'/%3E%3C/g%3E%3Cg transform='translate(300,200)'%3E%3Cpath d='M0 0 Q-5 -10 -3 -20 Q0 -30 3 -40 Q6 -50 5 -60 Q3 -70 0 -80 Q2 -85 5 -80 Q8 -70 10 -60 Q12 -50 15 -40 Q18 -30 20 -20 Q18 -10 15 0' fill='%23F57F17'/%3E%3Cellipse cx='0' cy='-5' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-10' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-15' rx='3' ry='2'/%3E%3Cellipse cx='15' cy='-20' rx='3' ry='2'/%3E%3Cellipse cx='12' cy='-25' rx='3' ry='2'/%3E%3Cellipse cx='8' cy='-30' rx='3' ry='2'/%3E%3Cellipse cx='10' cy='-35' rx='3' ry='2'/%3E%3Cellipse cx='7' cy='-40' rx='3' ry='2'/%3E%3Cellipse cx='5' cy='-45' rx='3' ry='2'/%3E%3Cellipse cx='3' cy='-50' rx='3' ry='2'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='30' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3ECultivo de Cebada%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Estación Meteorológica */
+.weather-station-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2387CEEB'/%3E%3Cg%3E%3Crect x='180' y='150' width='40' height='100' fill='%23E0E0E0'/%3E%3Crect x='175' y='145' width='50' height='10' fill='%23BDBDBD'/%3E%3Ccircle cx='200' cy='120' r='25' fill='white' stroke='%23666' stroke-width='2'/%3E%3Cg fill='%23666'%3E%3Ccircle cx='200' cy='120' r='3'/%3E%3Cline x1='200' y1='95' x2='200' y2='105' stroke='%23666' stroke-width='2'/%3E%3Cline x1='200' y1='135' x2='200' y2='145' stroke='%23666' stroke-width='2'/%3E%3Cline x1='175' y1='120' x2='185' y2='120' stroke='%23666' stroke-width='2'/%3E%3Cline x1='215' y1='120' x2='225' y2='120' stroke='%23666' stroke-width='2'/%3E%3C/g%3E%3Cg transform='rotate(45 200 120)'%3E%3Cline x1='200' y1='100' x2='200' y2='110' stroke='red' stroke-width='3'/%3E%3C/g%3E%3Crect x='150' y='80' width='100' height='30' rx='15' fill='%234CAF50'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='white' font-size='12' font-family='Arial'%3EWeather Pro%3C/text%3E%3Cg fill='%23666'%3E%3Ccircle cx='160' cy='60' r='8'/%3E%3Cpath d='M160 52 L165 62 L155 62 Z'/%3E%3Crect x='230' y='70' width='20' height='15' fill='%23FFA726'/%3E%3Cg stroke='%23FFA726' stroke-width='1' fill='none'%3E%3Cline x1='255' y1='72' x2='265' y2='72'/%3E%3Cline x1='255' y1='77' x2='265' y2='77'/%3E%3Cline x1='255' y1='82' x2='265' y2='82'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='280' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3EEstación Meteorológica%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Daño por Plagas */
+.pest-damage-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23FF7043'/%3E%3Cg%3E%3Cg fill='%234CAF50'%3E%3Cellipse cx='150' cy='150' rx='80' ry='40' transform='rotate(-20 150 150)'/%3E%3Cellipse cx='250' cy='120' rx='70' ry='35' transform='rotate(15 250 120)'/%3E%3Cellipse cx='200' cy='200' rx='90' ry='45' transform='rotate(-10 200 200)'/%3E%3C/g%3E%3Cg fill='%23A5D6A7' opacity='0.8'%3E%3Cellipse cx='130' cy='140' rx='60' ry='30' transform='rotate(-25 130 140)'/%3E%3Cellipse cx='270' cy='110' rx='50' ry='25' transform='rotate(20 270 110)'/%3E%3Cellipse cx='180' cy='190' rx='70' ry='35' transform='rotate(-15 180 190)'/%3E%3C/g%3E%3Cg fill='%238BC34A'%3E%3Cpath d='M120 130 Q110 120 115 110 Q125 100 135 105 Q140 115 145 125 Q140 135 130 140 Q120 145 115 135 Q115 130 120 130'/%3E%3Cpath d='M160 100 Q150 90 155 80 Q165 70 175 75 Q180 85 185 95 Q180 105 170 110 Q160 115 155 105 Q155 100 160 100'/%3E%3Cpath d='M240 130 Q230 120 235 110 Q245 100 255 105 Q260 115 265 125 Q260 135 250 140 Q240 145 235 135 Q235 130 240 130'/%3E%3C/g%3E%3Cg fill='%23D32F2F' opacity='0.7'%3E%3Ccircle cx='140' cy='135' r='8'/%3E%3Ccircle cx='160' cy='145' r='6'/%3E%3Ccircle cx='180' cy='130' r='7'/%3E%3Ccircle cx='220' cy='140' r='5'/%3E%3Ccircle cx='240' cy='125' r='9'/%3E%3Ccircle cx='200' cy='180' r='8'/%3E%3Ccircle cx='170' cy='190' r='6'/%3E%3C/g%3E%3Cg fill='%23795548'%3E%3Cellipse cx='130' cy='125' rx='4' ry='2' transform='rotate(30 130 125)'/%3E%3Cellipse cx='165' cy='135' rx='3' ry='1.5' transform='rotate(-20 165 135)'/%3E%3Cellipse cx='190' cy='120' rx='4' ry='2' transform='rotate(45 190 120)'/%3E%3Cellipse cx='235' cy='130' rx='3' ry='1.5' transform='rotate(-10 235 130)'/%3E%3Cellipse cx='175' cy='185' rx='4' ry='2' transform='rotate(20 175 185)'/%3E%3C/g%3E%3C/g%3E%3Ctext x='200' y='40' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3EDaño por Plagas%3C/text%3E%3Ctext x='200' y='270' text-anchor='middle' fill='white' font-size='16' font-family='Arial'%3EMonitoreo y Control%3C/text%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+/* Estilos responsivos para imágenes */
+@media (max-width: 768px) {
+  .image-placeholder {
+    min-height: 150px;
+    font-size: 36px;
+  }
+  
+  .solar-panel-image,
+  .irrigation-image,
+  .corn-image,
+  .potato-image,
+  .barley-image,
+  .weather-station-image,
+  .pest-damage-image {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-placeholder {
+    min-height: 120px;
+    font-size: 28px;
+  }
+  
+  .solar-panel-image,
+  .irrigation-image,
+  .corn-image,
+  .potato-image,
+  .barley-image,
+  .weather-station-image,
+  .pest-damage-image {
+    min-height: 150px;
+  }
+}
+
+/* Efectos de hover para mejorar interactividad */
+.image-container:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Indicador de carga */
+.image-loading {
+  position: relative;
+}
+
+.image-loading::after {
+  content: '⏳';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Optimización para modo offline */
+.offline .image-container {
+  filter: grayscale(20%);
+  opacity: 0.9;
+}
+
+.offline .image-container::before {
+  content: '📵';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  background: rgba(255,255,255,0.9);
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 12px;
+}
