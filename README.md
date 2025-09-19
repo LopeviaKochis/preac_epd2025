@@ -1,35 +1,62 @@
-# PREAC - Plataforma de Recomendaciones para la Agricultura Inteligente
+# Plataforma de Resiliencia Energética y Agroclimática (EnerAgro PE)
 
 ## 📋 Descripción
-PREAC es una aplicación web progresiva (PWA) diseñada para agricultores peruanos que proporciona herramientas inteligentes para mejorar la productividad agrícola mediante tecnologías de Machine Learning e Internet de las Cosas (IoT).
+EnerAgro PE es una aplicación web progresiva (PWA) y Plataforma de Resiliencia Energética y Agroclimática, diseñada para la datathon "Exprésate Perú con Datos 2025". Su objetivo es empoderar a los agricultores peruanos con herramientas inteligentes para mejorar la productividad y la resiliencia frente al cambio climático, integrando Machine Learning e Internet de las Cosas (IoT).
 
 ## ✨ Características Principales
 
 ### 🌟 Funcionalidades Core
-- **💡 Energía Solar**: Calculadora para sistemas fotovoltaicos agrícolas
-- **💧 Riego Inteligente**: Optimización de sistemas de irrigación
-- **🌤️ Asistencia Agroclimática**: Pronósticos y alertas meteorológicas
-- **📊 Recomendaciones de Producción**: Optimización de cultivos y variedades
-- **🐛 Prevención de Plagas**: Detección temprana y manejo integrado
+- **💡 Resiliencia Energética**: Calculadora para sistemas fotovoltaicos y optimización de consumo.
+- **💧 Riego Inteligente**: Optimización de sistemas de irrigación basados en datos locales.
+- **🌤️ Asistencia Agroclimática**: Pronósticos de heladas y alertas meteorológicas personalizadas.
+- **📊 Recomendaciones de Producción**: Optimización de cultivos y variedades según el clima.
+- **🐛 Prevención de Plagas**: Detección temprana y manejo integrado.
 
 ### 🔧 Características Técnicas
-- **📱 PWA**: Funcionamiento offline con Service Workers
-- **🔐 Autenticación**: Sistema JWT con validación de números peruanos
-- **📨 SMS**: Notificaciones vía Twilio para alertas críticas
-- **📊 Visualización**: Gráficos interactivos con Chart.js
-- **🎨 UI/UX**: Interfaz moderna con Material-UI
-- **🌐 API REST**: Backend robusto con Express.js
+- **🤖 Modelo ML Integrado**: Predicción de heladas con un modelo de Gradient Boosting.
+- **📱 PWA**: Funcionamiento offline con Service Workers para zonas de baja conectividad.
+- **🔐 Autenticación**: Sistema JWT con validación de números peruanos.
+- **📨 Alertas SMS**: Notificaciones críticas vía Twilio.
+- **🎨 UI/UX**: Interfaz moderna y accesible con Material-UI.
+- **🌐 API REST**: Backend robusto con Node.js y Express.js.
 
 ## 🏗️ Arquitectura del Sistema
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │    Backend      │    │   FastAPI ML    │
-│   React + Vite  │◄──►│   Node.js +     │◄──►│   Services      │
-│   Material-UI   │    │   Express.js    │    │   (Futuro)      │
-│   PWA + SW      │    │   JWT + Twilio  │    │                 │
+│   Frontend      │    │    Backend      │    │  Python Script  │
+│  (EnerAgro PE)  │◄──►│   Node.js +     │◄──►│   (ML Model)    │
+│   React + Vite  │    │   Express.js    │    │   scikit-learn  │
+│   PWA + MUI     │    │   JWT + Twilio  │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
+
+## 🚀 Roadmap y Visión a Futuro
+
+Nuestro objetivo es evolucionar de un MVP a una plataforma integral y escalable.
+
+### Fase 1: Despliegue y Consolidación
+1.  **☁️ Desplegar en GCP (Google Cloud Platform)**: Mover la aplicación a una infraestructura cloud robusta para garantizar alta disponibilidad y escalabilidad.
+2.  **📦 Contenerización**: Utilizar Docker para estandarizar los entornos de desarrollo y producción.
+3.  **🧪 Pruebas Unitarias y de Integración**: Implementar un pipeline de testing con Jest y Cypress para asegurar la calidad del código.
+
+### Fase 2: Abstracción del Machine Learning
+1.  **🤖 Endpoint de Modelos ML**: Migrar la ejecución de los scripts de Python a un servidor dedicado (usando FastAPI o Flask) para desacoplar la lógica de ML del backend principal.
+2.  **🧠 Modelos Avanzados**: Desarrollar y consumir nuevos modelos para:
+    *   **Prevención de Plagas**: Detección de plagas mediante Computer Vision.
+    *   **Riego Inteligente**: Predicción de necesidades hídricas con mayor precisión.
+    *   **Producción**: Modelos de predicción de rendimiento de cultivos.
+
+### Fase 3: Soberanía de Datos y Escalabilidad
+1.  **🛰️ Pipeline de Datos Locales**: Establecer un sistema de recolección y procesamiento de datos climáticos y de campo (sensores IoT) para reducir la dependencia de APIs externas como OpenMeteo. Esto nos permitirá generar predicciones hiper-localizadas y en tiempo real.
+2.  **🐘 Base de Datos Escalable**: Migrar de archivos JSON a un sistema de base de datos robusto como PostgreSQL o MongoDB.
+3.  **⚙️ CI/CD**: Automatizar los despliegues utilizando GitHub Actions.
+
+### Fase 4: Expansión de Módulos
+1.  **💧 Riego Inteligente**: Integrar datos del pipeline local y sensores IoT para ofrecer recomendaciones de riego ultra-precisas.
+2.  **🐛 Prevención de Plagas**: Activar el módulo con modelos de Computer Vision para que los usuarios puedan identificar plagas subiendo una foto desde su celular.
+3.  **📊 Recomendaciones de Producción**: Mejorar las recomendaciones con datos históricos de rendimiento y precios de mercado.
+4.  **💡 Resiliencia Energética**: Añadir un dashboard de monitoreo de consumo en tiempo real para sistemas fotovoltaicos.
 
 ## 🚀 Instalación y Configuración
 
